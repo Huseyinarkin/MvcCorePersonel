@@ -2,7 +2,7 @@
 
 namespace MvcSite.Migrations
 {
-    public partial class mig1 : Migration
+    public partial class m1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,21 +27,34 @@ namespace MvcSite.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Ad = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SoyAd = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Sehir = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Sehir = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DepartmanID = table.Column<int>(type: "int", nullable: false),
+                    DepartmanlarID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Personels", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Personels_Departmanlars_DepartmanlarID",
+                        column: x => x.DepartmanlarID,
+                        principalTable: "Departmanlars",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Personels_DepartmanlarID",
+                table: "Personels",
+                column: "DepartmanlarID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Departmanlars");
+                name: "Personels");
 
             migrationBuilder.DropTable(
-                name: "Personels");
+                name: "Departmanlars");
         }
     }
 }

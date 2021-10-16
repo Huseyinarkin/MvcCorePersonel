@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<MvcSite.Models.Personel>
+@{
+    Layout = "~/Views/Shared/_LayoutTest.cshtml";
+}
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Ad</th>
+            <th scope="col">SoyAd</th>
+            <th scope="col">Sehir</th>
+            <th scope="col">Departman</th>
+            <th scope="col">Sil</th>
+            <th scope="col">Güncelle</th>
+            <th scope="col">Detay</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.ID</th>
+                <td>@item.Ad</td>
+                <td>@item.SoyAd</td>
+                <td>@item.Sehir</td>
+                <td>@item.DepartmanID</td>
+                <td><a href="/Personel/DepartmanSil/@item.ID/" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Personel/DepartmanGetir/@item.ID/" class="btn btn-success">Güncelle</a></td>
+                <td><a href="#" class="btn btn-dark">Detay</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Personel/Yenipersonel/" class="btn btn-primary">Personel Ekle</a>

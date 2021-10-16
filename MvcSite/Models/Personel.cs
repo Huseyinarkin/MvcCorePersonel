@@ -13,5 +13,8 @@ namespace MvcSite.Models
         public string Ad { get; set; }
         public string SoyAd { get; set; }
         public string Sehir { get; set; }
+        public int DepartmanID { get; set; }
+        public virtual Departmanlar Departmanlar { get; set; }
+              
     }
 }
