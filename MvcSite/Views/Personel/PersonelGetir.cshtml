@@ -2,11 +2,14 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model MvcSite.Models.Personel
-@{
+@{    
     Layout = "~/Views/Shared/_LayoutTest.cshtml";
 }
-<br />
-<form class="form-group" method="post">
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.ID)
+    @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly=readonly" })
+    <br />
     @Html.LabelFor(x => x.Ad)
     @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
     <br />
@@ -19,5 +22,5 @@
     @Html.LabelFor(x => x.DepartmanlarID)
     @Html.TextBoxFor(x => x.DepartmanlarID, new { @class = "form-control" })
     <br />
-    <button class="btn btn-info">Personel Ekle</button>
-</form>
+    <button class="btn btn-outline-success">Güncelle</button>
+}

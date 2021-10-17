@@ -11,6 +11,7 @@ namespace MvcSite.Models
         [Key]
         public int ID { get; set; }
         public string DepartmanAdi { get; set; }
-        public ICollection<Personel> Personels { get; set; }
+
+        public IList<Personel> Personels { get; set; }
     }
 }

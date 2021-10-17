@@ -2,7 +2,7 @@
 
 namespace MvcSite.Migrations
 {
-    public partial class m1 : Migration
+    public partial class a1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,8 +28,7 @@ namespace MvcSite.Migrations
                     Ad = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SoyAd = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Sehir = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DepartmanID = table.Column<int>(type: "int", nullable: false),
-                    DepartmanlarID = table.Column<int>(type: "int", nullable: true)
+                    DepartmanlarID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -39,7 +38,7 @@ namespace MvcSite.Migrations
                         column: x => x.DepartmanlarID,
                         principalTable: "Departmanlars",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
