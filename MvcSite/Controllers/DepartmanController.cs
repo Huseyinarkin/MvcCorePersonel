@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MvcSite.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MvcSite.Controllers
 {
@@ -45,6 +46,13 @@ namespace MvcSite.Controllers
             dep.DepartmanAdi = dvalue.DepartmanAdi;
             c.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public IActionResult DepartmanDetay(int id)
+        {
+            List<Personel> dgr = c.Personels.Where(x => x.DepartmanlarID == id).Include(x => x.Departmanlar).ToList();
+            string dadi = c.Departmanlars.Where(x => x.ID == id).Select(y => y.DepartmanAdi).FirstOrDefault();
+            ViewBag.baslik = dadi;
+            return View(dgr);
         }
     }
 }
