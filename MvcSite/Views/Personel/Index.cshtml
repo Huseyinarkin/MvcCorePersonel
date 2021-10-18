@@ -15,8 +15,7 @@
             <th scope="col">Sehir</th>
             <th scope="col">Departman</th>
             <th scope="col">Sil</th>
-            <th scope="col">Güncelle</th>
-            <th scope="col">Detay</th>
+            <th scope="col">Güncelle</th>            
         </tr>
     </thead>
     <tbody>
@@ -29,8 +28,7 @@
                 <td>@item.Sehir</td>
                 <td>@item.Departmanlar.DepartmanAdi</td>
                 <td><a href="/Personel/PersonelSil/@item.ID/" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Personel/PersonelGetir/@item.ID/" class="btn btn-success">Güncelle</a></td>
-                <td><a href="#" class="btn btn-dark">Detay</a></td>
+                <td><a href="/Personel/PersonelGetir/@item.ID/" class="btn btn-success">Güncelle</a></td>                
             </tr>
         }
     </tbody>

@@ -17,7 +17,7 @@
     @Html.TextBoxFor(x => x.Sehir, new { @class = "form-control" })
     <br />
     @Html.LabelFor(x => x.DepartmanlarID)
-    @Html.TextBoxFor(x => x.DepartmanlarID, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.Departmanlar.ID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
     <br />
     <button class="btn btn-info">Personel Ekle</button>
 </form>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MvcSite.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MvcSite.Controllers
 {
@@ -19,11 +20,20 @@ namespace MvcSite.Controllers
         [HttpGet]
         public IActionResult YeniPersonel()
         {
+            List<SelectListItem> degerler = (from x in c.Departmanlars.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = x.DepartmanAdi,
+                                                 Value = x.ID.ToString()
+                                             }).ToList();
+            ViewBag.dgr = degerler;
             return View();
         }
         [HttpPost]
         public IActionResult YeniPersonel(Personel pvalue)
         {
+            var per = c.Departmanlars.Where(x => x.ID == pvalue.Departmanlar.ID).FirstOrDefault();
+            pvalue.Departmanlar = per;
             c.Personels.Add(pvalue);
             c.SaveChanges();
             return RedirectToAction("Index");
