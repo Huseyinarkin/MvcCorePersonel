@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using MvcSite.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MvcSite.Controllers
 {
     public class PersonelController : Controller
     {
         Context c = new Context();
+        [Authorize]
         public IActionResult Index()
         {
             var pvalues = c.Personels.Include(x=>x.Departmanlar).ToList();
