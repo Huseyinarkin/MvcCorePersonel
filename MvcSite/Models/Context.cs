@@ -10,10 +10,22 @@ namespace MvcSite.Models
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-68S784Q; database=CorePersonel; integrated security=true;");
+            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=CorePersonel;MultipleActiveResultSets=True");
         }
         public DbSet<Departmanlar> Departmanlars { get; set; }
         public DbSet<Personel> Personels { get; set; }
         public DbSet<Admin> Admins { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Admin>().HasData(
+                    new Admin
+                    {
+                        ID = 1,
+                        Kullanici = "a",
+                        Sifre = "a"
+                    }
+                );
+        }
     }
 }
